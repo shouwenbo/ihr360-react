@@ -39,7 +39,9 @@ class HandleTodo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      files: data
+      files: data,
+      sprData: ['陈佳荣', '马昌波'],
+      csrData: ['刘啸', '董涛']
     };
   }
   onChange = (files, type, index) => {
@@ -56,7 +58,7 @@ class HandleTodo extends Component {
   render() {
     console.log('render里面的props', this.props);
     const {getFieldProps, getFieldError} = this.props.form;
-    const {files} = this.state;
+    const {files, sprData, csrData} = this.state;
     return (
       <WingBlank size="lg">
         <WhiteSpace size="lg" />
@@ -151,19 +153,28 @@ class HandleTodo extends Component {
           <WhiteSpace size="md" />
           <List>
             <PersonSelector
-                            ref="spr"
                             title="请选择审批人"
-                            data={ ['陈佳荣', '马昌波'] }
-                            onClick={ () => {
-                                        //this.saveStore();
-                                        //this.refs.spr.props.data.push('dsadas');
-                                      } } />
+                            data={ sprData ? sprData : [] }
+                            addPerson={ () => {
+                                          let aa = "张三";
+                                          const {sprData} = this.state;
+                                          this.setState({
+                                            sprData: [...sprData, aa]
+                                          })
+                                        } } />
           </List>
           <WhiteSpace size="md" />
           <List>
             <PersonSelector
                             title="请选择抄送人"
-                            data={ ['刘啸', '董涛'] } />
+                            data={ csrData ? csrData : [] }
+                            addPerson={ () => {
+                                          let aa = "张三";
+                                          const {csrData} = this.state;
+                                          this.setState({
+                                            csrData: [...csrData, aa]
+                                          })
+                                        } } />
           </List>
         </form>
       </WingBlank>

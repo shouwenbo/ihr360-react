@@ -5,16 +5,10 @@ import { List, Tag, Button } from 'antd-mobile'
 class PersonSelector extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props.data)
     this.setState({
-      data: this.props.data
-    });
-    console.log(this.state);
+      data: []
+    })
   }
-  //componentWillReceiveProps = (props) => {
-  //  console.log('接受props');
-  //  console.log(props);
-  //}
   render() {
     return (
       <div>
@@ -42,7 +36,7 @@ class PersonSelector extends Component {
               )
             }) }
         </div>
-        <Button onClick={ this.props.onClick }>
+        <Button onClick={ this.props.addPerson }>
           添加人员
         </Button>
       </div>
