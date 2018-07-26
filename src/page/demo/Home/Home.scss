@@ -1,0 +1,15 @@
+$title-color: red;
+.Home{
+	color:$title-color;
+}
+
+$highlight-color: #F90;
+.selected {
+  border: 1px solid $highlight-color;
+}
+
+//编译后
+
+.selected {
+  border: 1px solid #F90;
+}

@@ -1,0 +1,18 @@
+.sub-title {
+  color: #888;
+  font-size: 14px;
+  padding: 15px 0 9px 15px;
+}
+
+.tag-container{
+  display: flex;
+  padding-top: 9px;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+
+.tag-container > div {
+  margin-left: 9px;
+  margin-bottom: 9px;
+}
