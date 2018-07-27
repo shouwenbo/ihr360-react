@@ -2,6 +2,15 @@ import * as dd from 'dingtalk-jsapi'
 import axios from 'axios'
 import $ from 'jquery'
 
+function getQueryString(name) {
+  var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+  var r = window.location.search.substr(1).match(reg);
+  if (r != null) {
+    return unescape(r[2]);
+  }
+  return null;
+}
+
 export default class DDServer {
   constructor() {}
   static agentId = '';
@@ -10,6 +19,12 @@ export default class DDServer {
     var _cfg = DDServer.getConfig();
     DDServer.agentId = _cfg.appId;
     DDServer.corpId = _cfg.corpId;
+
+
+    // let corpId = window.location.href;
+    //console.log(window.location.href);
+    //console.log(getQueryString('corpId'));
+
   }
   static getVersion = () => {
     return dd.version;

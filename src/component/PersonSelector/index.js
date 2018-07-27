@@ -16,7 +16,7 @@ class PersonSelector extends Component {
                    extra="请选择"
                    arrow="horizontal"
                    onClick={ () => {
-                               //this.props.history.push('/Selector');
+                               this.props.history.push('/Selector');
                              } }>
           { this.props.title }
         </List.Item>
@@ -36,7 +36,10 @@ class PersonSelector extends Component {
               )
             }) }
         </div>
-        <Button onClick={ this.props.addPerson }>
+        <Button
+                onClick={ this.props.addPerson }
+                size="small"
+                inline>
           添加人员
         </Button>
       </div>

@@ -1,0 +1,62 @@
+import axios from 'axios'
+import $ from 'jquery'
+
+axios.post('/api/account/login/v7', {
+  "password": "jj",
+  "userName": "17301641964",
+  "companyName": "蓝晓软件",
+  "type": "CHINA",
+}).then(function(response) {
+  console.log('axios回调成功');
+  console.log(response);
+}).catch(function(error) {
+  console.log('axios回调失败');
+  console.log(error);
+});
+
+
+$.ajax({
+  url: '/api/account/login/v7',
+  type: 'post',
+  data: JSON.stringify({
+    "password": "jj",
+    "userName": "17301641964",
+    "companyName": "蓝晓软件",
+    "type": "CHINA",
+  }),
+  contentType: 'application/json',
+  dataType: 'json',
+  async: false,
+  success: function(data) {
+    console.log('$.ajax回调成功');
+    console.log(data);
+  },
+  error: function(err) {
+    console.log('$.ajax回调失败');
+    console.log(err);
+  }
+});
+
+"proxy":{
+  "/gateway/staff/api":{
+    "target":"https://www.ihr360.com:5555"
+  },
+  "/web":{
+    "target":"https://www.ihr360.com:8081"
+  },
+  "/gateway/staff/aggregate":{
+    "target":"https://www.ihr360.com:5555"
+  },
+  "/api":{
+    "target":"https://www.ihr360.com"
+  }
+},
+
+
+  "proxy": {
+    "/api": {
+        "target": "https://www.ihr360.com/"
+    }
+  },
+
+  "proxy":"https://www.ihr360.com/"

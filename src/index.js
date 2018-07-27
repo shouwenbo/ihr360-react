@@ -5,6 +5,17 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import store from '@/store'
 import AppRoute from '@/route/App'
 
+/*function getQueryString(name) {
+  var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+  var r = window.location.search.substr(1).match(reg);
+  if (r != null) {
+    return unescape(r[2]);
+  }
+  return null;
+}
+
+alert(window.location.href);
+alert(getQueryString('corp'));*/
 
 ReactDOM.render(
   <Provider store={ store }>

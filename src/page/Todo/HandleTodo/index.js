@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { createForm } from 'rc-form'
 import { withRouter } from 'react-router-dom'
-import { WhiteSpace, WingBlank, Steps, Card, List, InputItem, Toast, ImagePicker, TextareaItem, Tag } from 'antd-mobile'
+import { WhiteSpace, WingBlank, Steps, Card, List, InputItem, Flex, Toast, ImagePicker, TextareaItem, Tag, Button } from 'antd-mobile'
 //import Selector from '@/component/TagArea'
 import PersonSelector from '@/component/PersonSelector'
 import default_head from '@/images/oa/default_head.png'
@@ -55,8 +55,15 @@ class HandleTodo extends Component {
     //console.log(getFieldValue('count'));
     console.log(getFieldsValue());
   }
+  handleSubmit = () => {
+    const {getFieldsValue} = this.props.form;
+    console.log(getFieldsValue());
+    var fieldValue = getFieldsValue();
+    fieldValue.sprList = this.state.sprData;
+    fieldValue.csrData = this.state.csrData;
+    alert(JSON.stringify(fieldValue));
+  }
   render() {
-    console.log('render里面的props', this.props);
     const {getFieldProps, getFieldError} = this.props.form;
     const {files, sprData, csrData} = this.state;
     return (
@@ -146,7 +153,7 @@ class HandleTodo extends Component {
                          selectable={ files.length < 5 }
                          accept="*" />
             <TextareaItem
-                          {...getFieldProps( 'count')}
+                          {...getFieldProps( 'shenpiyijian')}
                           rows={ 5 }
                           count={ 100 } />
           </List>
@@ -176,6 +183,24 @@ class HandleTodo extends Component {
                                           })
                                         } } />
           </List>
+          <WhiteSpace size="md" />
+          <Flex>
+            <Flex.Item>
+              <Button
+                      type="primary"
+                      onClick={ this.handleSubmit }>
+                同意
+              </Button>
+            </Flex.Item>
+            <Flex.Item>
+              <Button
+                      type="ghost"
+                      onClick={ this.handleSubmit }>
+                驳回
+              </Button>
+            </Flex.Item>
+          </Flex>
+          <WhiteSpace size="lg" />
         </form>
       </WingBlank>
     )
